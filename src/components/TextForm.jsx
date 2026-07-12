@@ -4,7 +4,7 @@ export default function Texthtmlform(props) {
   function BtnClicked1() {
     let UpperText = text.toUpperCase();
     setText(UpperText);
-    props.showAlert("converted to UpperCase", "Success")
+    props.showAlert("converted to UpperCase", "success")
   }
   function Changed(event) {
     setText(event.target.value);
@@ -12,36 +12,36 @@ export default function Texthtmlform(props) {
   function BtnClicked2() {
     let LowerText = text.toLowerCase();
     setText(LowerText);
-    props.showAlert("converted to LowerCase", "Success")
+    props.showAlert("converted to LowerCase", "success")
   }
   function BtnClicked3() {
     setText("");
-    props.showAlert("All Cleared", "Success")
+    props.showAlert("All Cleared", "success")
   }
   
   const speak = () => {
     let msg = new SpeechSynthesisUtterance();
     msg.text = text;
     window.speechSynthesis.speak(msg);
-    props.showAlert("Speaking", "Success")
+    props.showAlert("Speaking", "success")
   };
   const cancelSpeech = () => {
     speechSynthesis.cancel();
-    props.showAlert("canceling speaking", "Success")
+    props.showAlert("canceling speaking", "success")
   };
   function HandleReverse() {
     let reverse = text.split("").reverse().join("");
     setText(reverse);
-    props.showAlert("converted to Reverse", "Success")
+    props.showAlert("converted to Reverse", "success")
   }
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
-    props.showAlert("copied to clipboard ", "Success")
+    props.showAlert("copied to clipboard ", "success")
   }
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "))
-    props.showAlert("removed all extra spaces ", "Success")
+    props.showAlert("removed all extra spaces ", "success")
 }
 
   const [text, setText] = useState("enter here");
@@ -102,7 +102,7 @@ export default function Texthtmlform(props) {
           <h3>Your Text Summary </h3>
         </b>
         <p>
-          {text.split(" ").length} Words and {text.length} characters
+          {text.split(" ").filter((element)=>{return element.length!==0}).length} Words and {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} Minutes needed to read this </p>
         <h2>Preview</h2>
